@@ -6,7 +6,7 @@
 # da do db
 # da do db bash
 da() {
-  [ -d ~/.da/.da-home/ ]  || mkdir -p ~/.da/.da-home/
+  mkdir -p ~/.da/.da-home/
   if [[ $1 == "do" ]]; then
     shift
     da_exec "$@"
