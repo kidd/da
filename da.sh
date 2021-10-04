@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-# hma up [maildev db]
-# hma down
-# hma do [harbormaster] [$HM_CLI]
-# hma do db
-# hma do db bash
-hma() {
+# da up [maildev db]
+# da down
+# da do [harbormaster] [$DA_CLI]
+# da do db
+# da do db bash
+da() {
   [ -d ~/.da/.da-home/ ]  || mkdir -p ~/.da/.da-home/
   if [[ $1 == "do" ]]; then
     shift
-    hma_exec "$@"
+    da_exec "$@"
   else
     USER=foo docker-compose -f docker-compose.yml -f docker-compose.override.yml "$@"
   fi
 }
 
-hma_exec() {
+da_exec() {
   local where=${1:-long_service}
   if [[ $where == "ls" ]]; then
     where="long_service"
@@ -23,9 +23,9 @@ hma_exec() {
 
   local cmd=${2:-""}
   if [[ -z "$2" ]]; then
-    cmd='$HM_CLI';
+    cmd='$DA_CLI';
   fi
-  hma exec "$where" sh -lic "$cmd"
+  da exec "$where" sh -lic "$cmd"
 }
 
-compdef hma=docker-compose
+compdef da=docker-compose

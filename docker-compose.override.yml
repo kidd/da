@@ -2,7 +2,7 @@ services:
   postgres:
     image: postgres:12
     environment:
-      HM_CLI: psql -U ${USER} -d ${USER}_dev
+      DA_CLI: psql -U ${USER} -d ${USER}_dev
       PGDATA: /pgtmpfs
       POSTGRES_DB: ${USER}
       POSTGRES_USER: ${USER}
@@ -23,12 +23,12 @@ services:
     environment:
       DB_NAME: ${USER}_dev
       DB_USER: ${USER}
-      HM_CLI: bash
+      DA_CLI: bash
     volumes:
     - ~/.da/.da-home:/root:rw
     - ~/.aws/credentials:/root/.aws/credentials:rw
   something_else:
     environment:
-      HM_CLI: bash
+      DA_CLI: bash
     volumes:
     - ~/.da/.da-home:/root:rw

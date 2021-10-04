@@ -1,0 +1,39 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:nil arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Docker Assistant
+#+date: <2021-10-04 lun>
+#+author: Raimon Grau
+#+email: rgrau@helixub
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 28.0.50 (Org mode 9.4.4)
+* Overview
+  After hours of thinking about development environments and how we
+  did it for Gojira, Pongo, and MBA, I wanted to create something that
+  would be more generic and more powerful, but realised that the use
+  cases depend a lot on the particular problem at hand.
+
+  The most distilled version I'm using nowadays is the one with less
+  complex dependencies and conditions, (not many optional services
+  without any wiring), and also less complex requirements (no need to
+  run tests on it, or run multiple instances in different networks)
+
+  This repo is just an overriding docker-compose with couple of shell
+  functions and an ad-hoc configuration file for the postgres docker
+  container.
+
+* Usage
+
+  #+begin_src
+    hma up [maildev db]
+    hma down
+    hma do [service] [$DA_CLI]
+    hma do db
+    hma do db bash
+  #+end_src
+
+* Install
